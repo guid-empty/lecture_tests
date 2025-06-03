@@ -34,8 +34,6 @@ void main() {
       );
       await tester.pump(Durations.medium1);
       await tester.pump(Durations.medium1);
-      await tester.pump(Durations.medium1);
-      await tester.pump(Durations.medium1);
       return null;
     },
     builder: () => GoldenTestGroup(
