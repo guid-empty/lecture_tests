@@ -33,8 +33,6 @@ class TodoPageState extends State<TodoPage> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -48,16 +46,11 @@ class TodoPageState extends State<TodoPage> {
           final todo = todos[index];
           return GestureDetector(
             onTap: () => setState(() => selectedTodo = todo),
-            child: ListTile(
+            child: TodoItemWidget(
+              key: ValueKey('item_${todo.id}'),
+              item: todo,
               selected: _isSelected(todo),
-              selectedTileColor: theme.primaryColor,
-              selectedColor: theme.scaffoldBackgroundColor,
-              tileColor: todo.isCompleted ? theme.disabledColor : null,
-              title: TodoItemWidget(
-                item: todo,
-                key: ValueKey('item_${todo.id}'),
-                onCheckBoxTap: _handleCheckBoxTap,
-              ),
+              onCheckBoxTap: _handleCheckBoxTap,
             ),
           );
         },

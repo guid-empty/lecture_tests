@@ -12,6 +12,7 @@ void main() {
       const completedTodo = TodoModel(id: 1, title: '', isCompleted: false);
       final todoItemWidget = TodoItemWidget(
         item: completedTodo,
+        selected: false,
         onCheckBoxTap: (_) {},
       );
 
