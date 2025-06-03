@@ -28,7 +28,11 @@ class TodoItemWidget extends StatelessWidget {
       tileColor: item.isCompleted ? theme.disabledColor : null,
       // leading: Icon(
       //   item.isCompleted ? Icons.done : Icons.access_time,
-      //   color: selected || item.isCompleted ? Colors.white : theme.primaryColor,
+      //   color: selected
+      //       ? Colors.white
+      //       : item.isCompleted
+      //           ? null
+      //           : theme.primaryColor,
       //   size: 20,
       // ),
       title: Row(
