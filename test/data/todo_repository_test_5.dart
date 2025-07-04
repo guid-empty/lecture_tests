@@ -5,26 +5,38 @@ import 'package:lecture_about_tests/domain/todo_model.dart';
 
 void main() {
   group('TodoRepository', () {
-    test('и его метод fetchAll должен вернуть 5 задач в упорядоченном порядке',
-        () {
-      //  arrange
-      final repository = DI.todoRepository;
+    test(
+      'и его метод fetchAll должен вернуть 5 задач в упорядоченном порядке',
+      () {
+        //  AAA - Arrange, Act, Assert
+        //  arrange
+        //  act
+        //  assert
+      },
+    );
 
-      //  act
-      final actualTodos = repository.fetchAll();
-      final actualIds = actualTodos.map((e) => e.id).toList().take(5);
+    test(
+      'и его метод fetchAll должен вернуть 5 задач в упорядоченном порядке',
+      () {
+        //  arrange
+        final repository = DI.todoRepository;
 
-      //  assert
-      expect(actualIds.length, 5);
-      //
-      //  Expected: <6>
-      //   Actual: <5>
+        //  act
+        final actualTodos = repository.fetchAll();
+        final actualIds = actualTodos.map((e) => e.id).toList().take(5);
 
-      // expect(actualIds, hasLength(6));
+        //  assert
+        expect(actualIds.length, 5);
+        //
+        //  Expected: <6>
+        //   Actual: <5>
 
-      final expectedIds = [1, 2, 3, 4, 5];
-      expect(actualIds, orderedEquals(expectedIds));
-    });
+        // expect(actualIds, hasLength(6));
+
+        final expectedIds = [1, 2, 3, 4, 5];
+        expect(actualIds, orderedEquals(expectedIds));
+      },
+    );
 
     group('и его метод create', () {
       test('должен создать новую задачу со следующим Id в списке ', () {
@@ -65,15 +77,19 @@ void main() {
         expect(actualTodoIds, isNot(contains(1)));
       });
 
-      test('при указании несуществующей задачи должен упасть с исключением',
-          () {
-        //  arrange
-        final repository = DI.todoRepository;
+      test(
+        'при указании несуществующей задачи должен упасть с исключением',
+        () {
+          //  arrange
+          final repository = DI.todoRepository;
 
-        //  assert
-        expect(
-            () => repository.removeById(-1), throwsA(isA<NotFoundException>()));
-      });
+          //  assert
+          expect(
+            () => repository.removeById(-1),
+            throwsA(isA<NotFoundException>()),
+          );
+        },
+      );
     });
 
     group('и его метод completeTodo', () {
@@ -90,14 +106,18 @@ void main() {
         expect(actualFirstTodo.isCompleted, isTrue);
       });
 
-      test('при указании несуществующей задачи должен упасть с исключением',
-          () {
-        final repository = DI.todoRepository;
+      test(
+        'при указании несуществующей задачи должен упасть с исключением',
+        () {
+          final repository = DI.todoRepository;
 
-        //  assert
-        expect(() => repository.completeTodo(TodoModel.unknown),
-            throwsA(isA<NotFoundException>()));
-      });
+          //  assert
+          expect(
+            () => repository.completeTodo(TodoModel.unknown),
+            throwsA(isA<NotFoundException>()),
+          );
+        },
+      );
     });
 
     group('и его метод unCompleteTodo', () {
@@ -119,14 +139,18 @@ void main() {
         expect(actualFirstTodo.isCompleted, isFalse);
       });
 
-      test('при указании несуществующей задачи должен упасть с исключением',
-          () {
-        final repository = DI.todoRepository;
+      test(
+        'при указании несуществующей задачи должен упасть с исключением',
+        () {
+          final repository = DI.todoRepository;
 
-        //  assert
-        expect(() => repository.completeTodo(TodoModel.unknown),
-            throwsA(isA<NotFoundException>()));
-      });
+          //  assert
+          expect(
+            () => repository.completeTodo(TodoModel.unknown),
+            throwsA(isA<NotFoundException>()),
+          );
+        },
+      );
     });
   });
 }
